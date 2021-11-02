@@ -1,7 +1,7 @@
 Class {
 	#name : #PlotlyLayout,
 	#superclass : #PlotlyLayoutObject,
-	#category : #'Seaside-Plotly-Core'
+	#category : #'Seaside-Plotly-Core-Objects'
 }
 
 { #category : #axes }

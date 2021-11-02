@@ -1,5 +1,5 @@
 Class {
 	#name : #PlotlyFont,
 	#superclass : #PlotlyObject,
-	#category : #'Seaside-Plotly-Core'
+	#category : #'Seaside-Plotly-Core-Styles'
 }

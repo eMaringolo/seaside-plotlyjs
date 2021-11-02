@@ -1,7 +1,7 @@
 Class {
 	#name : #PlotlyMargin,
 	#superclass : #PlotlyObject,
-	#category : #'Seaside-Plotly-Core'
+	#category : #'Seaside-Plotly-Core-Styles'
 }
 
 { #category : #accessing }

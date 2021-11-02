@@ -11,7 +11,7 @@ Class {
 	#instVars : [
 		'properties'
 	],
-	#category : #'Seaside-Plotly-Core'
+	#category : #'Seaside-Plotly-Core-Objects'
 }
 
 { #category : #'error handling' }
@@ -32,6 +32,18 @@ PlotlyObject >> initialize [
 
 	super initialize.
 	properties := Dictionary new.
+]
+
+{ #category : #accessing }
+PlotlyObject >> javascriptOn: aStream [
+
+	JSStream encodeDictionary: self properties on: aStream
+]
+
+{ #category : #accessing }
+PlotlyObject >> jsonOn: json [
+
+	json render: self properties
 ]
 
 { #category : #accessing }
