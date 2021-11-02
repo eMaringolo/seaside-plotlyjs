@@ -4,7 +4,7 @@ Class {
 	#category : #'Seaside-Plotly-Core-Traces'
 }
 
-{ #category : #'checkbox-brick-accessing' }
+{ #category : #'instance creation' }
 PlotlyTrace class >> box [ 
 
 	^self new 
@@ -19,7 +19,14 @@ PlotlyTrace class >> bubble [
 		yourself
 ]
 
-{ #category : #'checkbox-brick-accessing' }
+{ #category : #'instance creation' }
+PlotlyTrace class >> contour [
+	^ self new
+		type: 'contour';
+		yourself
+]
+
+{ #category : #'instance creation' }
 PlotlyTrace class >> histogram [ 
 
 	^self new 
@@ -27,7 +34,7 @@ PlotlyTrace class >> histogram [
 		yourself
 ]
 
-{ #category : #'checkbox-brick-accessing' }
+{ #category : #'instance creation' }
 PlotlyTrace class >> pie [
 
 	^self new 
@@ -35,7 +42,7 @@ PlotlyTrace class >> pie [
 		yourself
 ]
 
-{ #category : #'checkbox-brick-accessing' }
+{ #category : #'instance creation' }
 PlotlyTrace class >> scatter [ 
 
 	^self new 

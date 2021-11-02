@@ -93,6 +93,41 @@ WAPlotlyExamples >> renderSourceOf: selector on: html [
 						with: sourceCode ] ]
 ]
 
+{ #category : #'sample traces' }
+WAPlotlyExamples >> sampleContourTrace [
+	| trace xValues yValues zValues |
+	trace := PlotlyTrace contour
+		name: 'Contour';
+		showlegend: false;
+		yourself.
+	xValues := Array new: 100.
+	yValues := Array new: 100.
+	zValues := Array new: 100.
+	xValues
+		withIndexDo: [ :e :i | 
+			| val |
+			val := -2 * Float pi + (4 * Float pi * (i - 1) / 100).
+			xValues at: i put: val.
+			yValues at: i put: val.
+			zValues at: i put: (Array new: 100) ].
+	xValues
+		withIndexDo: [ :x :i | 
+			yValues
+				withIndexDo: [ :y :j | 
+					| r2 z |
+					r2 := x * x + (y * y).
+					"Math.sin(x[i]) * Math.cos(y[j]) * Math.sin(r2) / Math.log(r2+1)."
+					z := [ x sin * y cos * r2 sin / (r2 + 1) ln ]
+						on: ZeroDivide
+						do: [ :ex | ex return: 0 ].
+					(zValues at: i) at: j put: z ] ].
+	trace
+		x: xValues;
+		y: yValues;
+		z: zValues.
+	^ trace
+]
+
 { #category : #'javascript-examples' }
 WAPlotlyExamples >> scriptExampleBoxOn: script elementId: elementId [
 	<example>
@@ -143,6 +178,23 @@ WAPlotlyExamples >> scriptExampleBubbleOn: script elementId: elementId [
 		layout:
 			(PlotlyLayout new
 				title: (PlotlyText text: 'Bubble plot');
+				width: 500 height: 300;
+				yourself).
+	plotly config beResponsive.
+	script << plotly
+]
+
+{ #category : #'javascript-examples' }
+WAPlotlyExamples >> scriptExampleContourOn: script elementId: elementId [
+	<example>
+	| plotly |
+	plotly := script plotly: elementId.
+	plotly
+		data:
+			{self sampleContourTrace};
+		layout:
+			(PlotlyLayout new
+				title: (PlotlyText text: 'Contour plot');
 				width: 500 height: 300;
 				yourself).
 	plotly config beResponsive.
