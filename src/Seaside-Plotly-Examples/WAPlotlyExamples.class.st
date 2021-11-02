@@ -70,7 +70,10 @@ WAPlotlyExamples >> renderHeaderOn: html [
 						class: 'lead';
 						with: [ html
 								html:
-									'Built on top of d3.js and stack.gl, <a href="https://plotly.com/javascript/">Plotly.js</a> is a high-level, declarative charting library. plotly.js ships with over 40 chart types, including 3D charts, statistical graphs, and SVG maps.' ] ] ]
+									'Built on top of d3.js and stack.gl, <a href="https://plotly.com/javascript/">Plotly.js</a> is a high-level and <a href="https://github.com/plotly/plotly.js">open source</a>, declarative charting library, with over 40 chart types, including 3D charts, statistical graphs, finalcial charts, SVG maps and more!' ].
+					html image
+						url:
+							'https://raw.githubusercontent.com/cldougl/plot_images/add_r_img/plotly_2017.png' ] ]
 ]
 
 { #category : #'rendering-meta' }
