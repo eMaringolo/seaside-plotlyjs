@@ -4,10 +4,55 @@ Class {
 	#category : #'Seaside-Plotly-Core-Traces'
 }
 
-{ #category : #convenience }
-PlotlyTrace >> beScatter [
+{ #category : #'checkbox-brick-accessing' }
+PlotlyTrace class >> box [ 
 
-	self type: 'scatter'
+	^self new 
+		type: 'box';
+		yourself
+]
+
+{ #category : #'instance creation' }
+PlotlyTrace class >> bubble [
+	^ self new
+		type: 'bubble';
+		yourself
+]
+
+{ #category : #'checkbox-brick-accessing' }
+PlotlyTrace class >> histogram [ 
+
+	^self new 
+		type: 'histogram';
+		yourself
+]
+
+{ #category : #'checkbox-brick-accessing' }
+PlotlyTrace class >> pie [
+
+	^self new 
+		type: 'pie';
+		yourself
+]
+
+{ #category : #'checkbox-brick-accessing' }
+PlotlyTrace class >> scatter [ 
+
+	^self new 
+		type: 'scatter';
+		yourself
+]
+
+{ #category : #configuring }
+PlotlyTrace >> marker: aPlotlyMarker [
+
+	self propertyAt: 'marker' put: aPlotlyMarker
+]
+
+{ #category : #configuring }
+PlotlyTrace >> showlegend: aBoolean [
+
+	self propertyAt: 'showlegend' put: aBoolean
 ]
 
 { #category : #configuring }

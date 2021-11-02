@@ -16,3 +16,9 @@ PlotlyLayout >> sceneAt: index [
 	^self propertyAt: (self sceneIdentifier: index)
 		ifAbsentPut: [PlotlyScene new]
 ]
+
+{ #category : #sizing }
+PlotlyLayout >> width: anInteger height: anInteger2 [
+	self width: anInteger.
+	self height: anInteger
+]

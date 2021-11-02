@@ -1,5 +1,5 @@
 Class {
 	#name : #PlotlyMarker,
 	#superclass : #PlotlyObject,
-	#category : #'Seaside-Plotly-Core-Styles'
+	#category : #'Seaside-Plotly-Core-Objects'
 }
