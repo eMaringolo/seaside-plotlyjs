@@ -68,8 +68,9 @@ WAPlotlyExamples >> renderHeaderOn: html [
 							html small: 'for Seaside!' ].
 					html paragraph
 						class: 'lead';
-						with:
-							'Modern scientific plots from the convenience of your Seaside rendering' ] ]
+						with: [ html
+								html:
+									'Built on top of d3.js and stack.gl, <a href="https://plotly.com/javascript/">Plotly.js</a> is a high-level, declarative charting library. plotly.js ships with over 40 chart types, including 3D charts, statistical graphs, and SVG maps.' ] ] ]
 ]
 
 { #category : #'rendering-meta' }
