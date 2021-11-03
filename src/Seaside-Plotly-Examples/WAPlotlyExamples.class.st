@@ -20,6 +20,14 @@ WAPlotlyExamples >> examples [
 				do: [ :pragma | s nextPut: pragma method selector ] ]
 ]
 
+{ #category : #private }
+WAPlotlyExamples >> randomColor [
+	^ Color 
+		h: 255 atRandom truncated 
+		s: 20 
+		v: 50
+]
+
 { #category : #rendering }
 WAPlotlyExamples >> renderContentOn: html [
 	self renderHeaderOn: html.
@@ -80,9 +88,7 @@ WAPlotlyExamples >> renderHeaderOn: html [
 { #category : #'rendering-meta' }
 WAPlotlyExamples >> renderSourceOf: selector on: html [
 	| sourceCode |
-	sourceCode := (self class compiledMethodAt: selector) sourceCode
-		copyReplaceAll: Character tab asString
-		with: '  '.
+	sourceCode := self sourceCodeOf: selector.
 	html div
 		class: 'card';
 		style: 'width: 100%';
@@ -170,12 +176,12 @@ WAPlotlyExamples >> scriptExampleBubbleOn: script elementId: elementId [
 			{(PlotlyTrace bubble
 				name: 'Line series';
 				showlegend: true;
-				x: (1 to: 5);
+				x: (1 to: 5) asArray;
 				y: ((1 to: 5) collect: [ :e | e squared ]);
 				mode: 'markers';
 				marker:
 					(PlotlyMarker new
-						color: ((1 to: 5) collect: [ :e | Color random asHTMLColor ]);
+						color: ((1 to: 5) collect: [ :e | self randomColor asHTMLColor ]);
 						opacity: ((1 to: 5) collect: [ :e | (0.5 to: 1 by: 0.1) atRandom ]);
 						size: ((1 to: 5) collect: [ :e | e squared * 3 ]);
 						yourself);
@@ -284,13 +290,13 @@ WAPlotlyExamples >> scriptExampleScatterOn: script elementId: elementId [
 				name: 'Scatter series';
 				showlegend: true;
 				mode: 'markers';
-				x: (1 to: 10);
+				x: (1 to: 10) asArray;
 				y: ((1 to: 10) collect: [ :each | 10 atRandom / 2 ]);
 				yourself).
 			(PlotlyTrace scatter
 				name: 'Line series';
 				showlegend: true;
-				x: (1 to: 10);
+				x: (1 to: 10) asArray;
 				y: ((1 to: 10) collect: [ :each | 10 atRandom / 2 ]);
 				yourself)};
 		layout:
@@ -300,6 +306,16 @@ WAPlotlyExamples >> scriptExampleScatterOn: script elementId: elementId [
 				yourself).
 	plotly config beResponsive.
 	script << plotly
+]
+
+{ #category : #private }
+WAPlotlyExamples >> sourceCodeOf: selector [
+	| sourceSelector |
+	sourceSelector := #(#sourceCode #sourceString)
+		detect: [ :symbol | CompiledMethod canUnderstand: symbol ].
+	^ ((self class compiledMethodAt: selector) perform: sourceSelector)
+		copyReplaceAll: Character tab asString
+		with: '  '
 ]
 
 { #category : #rendering }
