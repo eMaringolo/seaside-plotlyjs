@@ -12,12 +12,6 @@ PlotlyText class >> text: aString [
 ]
 
 { #category : #accessing }
-PlotlyText >> font: aPlotlyFont [
-
-	self propertyAt: 'font' put: aPlotlyFont
-]
-
-{ #category : #accessing }
 PlotlyText >> text: aString [
 
 	self propertyAt: 'text' put: aString

@@ -41,6 +41,12 @@ PlotlyAxis >> tickSuffix: aString [
 ]
 
 { #category : #accessing }
+PlotlyAxis >> tickmode: aString [
+
+	self propertyAt: 'tickmode' put: aString
+]
+
+{ #category : #accessing }
 PlotlyAxis >> ticks: position [
 
 	self propertyAt: 'ticks' put: position
@@ -51,6 +57,18 @@ PlotlyAxis >> ticksPosition: position [
 	"Alias for 'ticks' property, position can be one of 'outside', 'inside'."
 
 	self ticks: position
+]
+
+{ #category : #accessing }
+PlotlyAxis >> ticktext: aCollection [
+
+	self propertyAt: 'ticktext' put: aCollection
+]
+
+{ #category : #accessing }
+PlotlyAxis >> tickvals: aCollection [
+
+	self propertyAt: 'tickvals' put: aCollection
 ]
 
 { #category : #accessing }

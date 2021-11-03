@@ -44,9 +44,10 @@ WAPlotlyExamples >> renderExample: selector on: html [
 	html tag: 'hr'.
 	html document
 		addLoadScript:
-			(html jQuery
-				script: [ :script | self perform: selector with: script with: html lastId ])
-				asJSStream
+			(JSStream
+				on:
+					(html jQuery
+						script: [ :script | self perform: selector with: script with: html lastId ]))
 ]
 
 { #category : #'rendering-meta' }

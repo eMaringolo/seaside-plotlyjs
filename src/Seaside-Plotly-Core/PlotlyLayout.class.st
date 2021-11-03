@@ -5,6 +5,12 @@ Class {
 }
 
 { #category : #axes }
+PlotlyLayout >> legend [
+
+	^self propertyAt: 'legend' ifAbsentPut: [PlotlyLegend new]
+]
+
+{ #category : #axes }
 PlotlyLayout >> margin [
 
 	^self propertyAt: 'margin' ifAbsentPut: [PlotlyMargin new]

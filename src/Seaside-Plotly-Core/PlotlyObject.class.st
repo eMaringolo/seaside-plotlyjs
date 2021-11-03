@@ -16,15 +16,22 @@ Class {
 
 { #category : #'error handling' }
 PlotlyObject >> doesNotUnderstand: aMessage [
-
 	| selector |
 	selector := aMessage selector.
-	selector isKeyword
-		ifTrue: 
-			[selector numArgs = 0 ifTrue: [^self properties at: selector asLowercase ifAbsent: [nil]].
+	(selector isUnary or: [ selector isKeyword ])
+		ifTrue: [ selector numArgs = 0
+				ifTrue: [ ^ self properties at: selector asLowercase ifAbsent: [ nil ] ].
 			selector numArgs = 1
-				ifTrue: [self properties at: selector asGetter asLowercase put: aMessage arguments first. ^self]].
+				ifTrue: [ self properties
+						at: selector asGetter asLowercase
+						put: aMessage arguments first.
+					^ self ] ].
 	super doesNotUnderstand: aMessage
+]
+
+{ #category : #accessing }
+PlotlyObject >> font: aPlotlyFont [
+	self properties at: 'font' put: aPlotlyFont
 ]
 
 { #category : #'initialize-release' }
@@ -34,34 +41,34 @@ PlotlyObject >> initialize [
 	properties := Dictionary new.
 ]
 
-{ #category : #accessing }
+{ #category : #serializing }
 PlotlyObject >> javascriptOn: aStream [
 
 	JSStream encodeDictionary: self properties on: aStream
 ]
 
-{ #category : #accessing }
+{ #category : #serializing }
 PlotlyObject >> jsonOn: json [
 
 	json render: self properties
 ]
 
-{ #category : #accessing }
+{ #category : #'private-properties' }
 PlotlyObject >> properties [
 	^properties ifNil: [properties := Dictionary new]
 ]
 
-{ #category : #accessing }
+{ #category : #'private-properties' }
 PlotlyObject >> propertyAt: key ifAbsent: aBlock [
 	^self properties at: key ifAbsent: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : #'private-properties' }
 PlotlyObject >> propertyAt: key ifAbsentPut: aBlock [
 	^self properties at: key ifAbsentPut: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : #'private-properties' }
 PlotlyObject >> propertyAt: key put: anObject [
 	self properties at: key put: anObject
 ]
