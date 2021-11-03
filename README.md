@@ -77,3 +77,6 @@ Metacello new
 ## Examples
 
 After installing the default group, you can access `http://localhost:8080/plotly` to access an example component showing the different kind of plots, and the smalltalk code to produce them.
+
+## Future steps
+Add more examples about how to create other kind of plots (Surface, Mesh), and multiple plots, axis sharing, etc.
