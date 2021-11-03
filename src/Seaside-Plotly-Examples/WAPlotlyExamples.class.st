@@ -306,7 +306,7 @@ WAPlotlyExamples >> updateRoot: anHtmlRoot [
 	super updateRoot: anHtmlRoot.
 	self updateRootStyling: anHtmlRoot.
 	anHtmlRoot javascript
-		url: 'https://pagecdn.io/lib/plotly-js/2.4.2/plotly.min.js'.
+		url: 'https://cdn.plot.ly/plotly-2.4.2.min.js'.
 	anHtmlRoot title: 'Plotly.js for Seaside'
 ]
 
