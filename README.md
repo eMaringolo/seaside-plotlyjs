@@ -73,6 +73,17 @@ Metacello new
 	load.
 ```
 
+## Plotly.js library
+
+Given that the full Plotly.js library is heavy (~3.5MB mimized) and it is common to [build a custom bundle](https://github.com/plotly/plotly.js/blob/master/CUSTOM_BUNDLE.md) with only the plots used, this wrapper doesn't provide a [FileLibrary](https://github.com/SeasideSt/Seaside/wiki/FileLibrary), and instead you have to link to the library, either by using a [CDN](https://plotly.com/javascript/getting-started/#plotlyjs-cdn) or downloading it and linking to the file location.
+
+
+```smalltalk
+updateRoot: anHtmlRoot
+	super updateRoot: anHtmlRoot.
+	anHtmlRoot script url: 'https://cdn.plot.ly/plotly-2.4.2.min.js'.
+        "..."
+```
 
 ## Examples
 
