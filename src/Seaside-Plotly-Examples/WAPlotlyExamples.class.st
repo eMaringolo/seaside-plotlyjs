@@ -129,7 +129,7 @@ WAPlotlyExamples >> sampleContourTrace [
 					r2 := x * x + (y * y).
 					"Math.sin(x[i]) * Math.cos(y[j]) * Math.sin(r2) / Math.log(r2+1)."
 					z := [ x sin * y cos * r2 sin / (r2 + 1) ln ]
-						on: ZeroDivide
+						on: Error
 						do: [ :ex | ex return: 0 ].
 					(zValues at: i) at: j put: z ] ].
 	trace
