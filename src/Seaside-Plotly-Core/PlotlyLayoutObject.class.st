@@ -7,7 +7,7 @@ Class {
 { #category : #axes }
 PlotlyLayoutObject >> axisAt: axisLetter [
 
-	^self axisAt: axisLetter index: 0
+	^self axisAt: axisLetter index: 1
 ]
 
 { #category : #axes }
@@ -53,4 +53,16 @@ PlotlyLayoutObject >> sceneIdentifier: anInteger [
 	^anInteger = 1
 		ifTrue: ['scene' asString]
 		ifFalse: ['scene' , anInteger printString]
+]
+
+{ #category : #axes }
+PlotlyLayoutObject >> xAxis [
+
+	^self axisAt: 'x'
+]
+
+{ #category : #axes }
+PlotlyLayoutObject >> yAxis [
+
+	^self axisAt: 'y'
 ]
