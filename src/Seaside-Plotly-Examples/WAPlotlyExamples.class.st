@@ -115,16 +115,16 @@ WAPlotlyExamples >> sampleContourTrace [
 	yValues := Array new: 100.
 	zValues := Array new: 100.
 	xValues
-		withIndexDo: [ :e :i | 
+		doWithIndex: [ :e :i | 
 			| val |
 			val := -2 * Float pi + (4 * Float pi * (i - 1) / 100).
 			xValues at: i put: val.
 			yValues at: i put: val.
 			zValues at: i put: (Array new: 100) ].
 	xValues
-		withIndexDo: [ :x :i | 
+		doWithIndex: [ :x :i | 
 			yValues
-				withIndexDo: [ :y :j | 
+				doWithIndex: [ :y :j | 
 					| r2 z |
 					r2 := x * x + (y * y).
 					"Math.sin(x[i]) * Math.cos(y[j]) * Math.sin(r2) / Math.log(r2+1)."
