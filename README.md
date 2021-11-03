@@ -1,7 +1,7 @@
 <img src="https://avatars.githubusercontent.com/u/8545049?s=200&v=4" height="70"> <a href="https://plotly.com/javascript/"><img src="https://images.plot.ly/logo/plotlyjs-logo@2x.png" height="70"></a>
 
 # seaside-plotlyjs
-This library provides a wrapper, including a builder class and specific abstractions, to create Plotly.js plots from your Seaside canvas classes.
+This library provides a wrapper, including a builder class and specific abstractions, to create [Plotly.js](https://plotly.com/javascript/) plots from your [Seaside](https://github.com/SeasideSt/Seaside) canvas classes.
 
 <p align="center">
     <a href="https://plotly.com/javascript/" target="_blank">
