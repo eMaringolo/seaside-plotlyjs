@@ -66,12 +66,31 @@ renderContentOn: html
 
 ## Installation
 
+### Pharo 8.0 or newer
+
 ```smalltalk
 Metacello new
 	repository: 'github://emaringolo/seaside-plotlyjs/src';
 	baseline: 'Plotly';
 	load.
 ```
+
+### VAST Platform (VA Smalltalk) 10.0.02 or newer
+
+* Load `ENVY/Image Tonel support` feature
+* Load `ST: Server Smalltalk (SST) - Seaside` feature
+* Clone this repository to a local drive
+
+```smalltalk
+| loader path |
+path := (CfsPath named: 'path\to\repository'). "Path to the cloned repository"
+loader := TonelLoader readFromPath: path.
+loader
+	beUnattended;
+	useGitVersion;
+	loadApplicationsForPackagesNamed: #('Seaside-Plotly-Core' 'Seaside-Plotly-Examples').
+```
+
 
 ## Plotly.js library
 
