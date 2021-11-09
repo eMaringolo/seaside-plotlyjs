@@ -5,6 +5,13 @@ Class {
 }
 
 { #category : #accessing }
+PlotlyMargin class >> value: anInteger [
+	^ self new
+		value: anInteger;
+		yourself
+]
+
+{ #category : #accessing }
 PlotlyMargin >> bottom: anInteger [
 
 	self propertyAt: 'b' put: anInteger

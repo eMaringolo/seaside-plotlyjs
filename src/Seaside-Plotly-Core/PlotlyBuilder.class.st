@@ -70,7 +70,7 @@ PlotlyBuilder >> initializeParameters [
 
 { #category : #printing }
 PlotlyBuilder >> javascriptContentOn: aStream [
-
+	| config |
 	aStream
 		nextPutAll: self plotlyGlobal;
 		nextPut: $.;
@@ -78,8 +78,12 @@ PlotlyBuilder >> javascriptContentOn: aStream [
 		nextPut: $(;
 		javascript: self containerId;
 		nextPutAll: ', ';
-		javascript: self parameters;
-		nextPut: $)
+		javascript: self parameters data;
+		nextPutAll: ', ';
+		javascript: self parameters layout;
+		nextPutAll: ', ';
+		javascript: self parameters config.
+	aStream nextPut: $)
 ]
 
 { #category : #accessing }

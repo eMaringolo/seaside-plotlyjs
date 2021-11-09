@@ -14,17 +14,20 @@ Class {
 	#category : #'Seaside-Plotly-Core-Objects'
 }
 
+{ #category : #'private-properties' }
+PlotlyObject >> convertKey: key [
+	^ key asLowercase
+]
+
 { #category : #'error handling' }
 PlotlyObject >> doesNotUnderstand: aMessage [
 	| selector |
 	selector := aMessage selector.
 	(selector isUnary or: [ selector isKeyword ])
 		ifTrue: [ selector numArgs = 0
-				ifTrue: [ ^ self properties at: selector asLowercase ifAbsent: [ nil ] ].
+				ifTrue: [ ^ self propertyAt: selector asString ifAbsent: [ nil ] ].
 			selector numArgs = 1
-				ifTrue: [ self properties
-						at: selector asGetter asLowercase
-						put: aMessage arguments first.
+				ifTrue: [ self propertyAt: selector asGetter asString put: aMessage arguments first.
 					^ self ] ].
 	super doesNotUnderstand: aMessage
 ]
@@ -60,17 +63,19 @@ PlotlyObject >> properties [
 
 { #category : #'private-properties' }
 PlotlyObject >> propertyAt: key ifAbsent: aBlock [
-	^self properties at: key ifAbsent: aBlock
+	"Plotly.js has all properties in lowercase."
+
+	^ self properties at: (self convertKey: key) ifAbsent: aBlock
 ]
 
 { #category : #'private-properties' }
 PlotlyObject >> propertyAt: key ifAbsentPut: aBlock [
-	^self properties at: key ifAbsentPut: aBlock
+	^ self properties at: (self convertKey: key) ifAbsentPut: aBlock
 ]
 
 { #category : #'private-properties' }
 PlotlyObject >> propertyAt: key put: anObject [
-	self properties at: key put: anObject
+	self properties at: (self convertKey: key) put: anObject
 ]
 
 { #category : #accessing }

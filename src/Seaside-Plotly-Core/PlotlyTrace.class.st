@@ -51,6 +51,25 @@ PlotlyTrace class >> scatter [
 ]
 
 { #category : #configuring }
+PlotlyTrace >> clipOnAxis: aBoolean [
+	"Determines whether or not markers and text nodes are clipped about the subplot axes. To show markers and text nodes above axis lines and tick labels, make sure to set `xaxis.layer` and `yaxis.layer` to 'below traces'."
+
+	self propertyAt: 'cliponaxis' put: aBoolean
+]
+
+{ #category : #convenience }
+PlotlyTrace >> dontClipOnAxis [
+
+	self clipOnAxis: false
+]
+
+{ #category : #configuring }
+PlotlyTrace >> marker [
+
+	^self propertyAt: 'marker' ifAbsentPut: [ PlotlyMarker new ]
+]
+
+{ #category : #configuring }
 PlotlyTrace >> marker: aPlotlyMarker [
 
 	self propertyAt: 'marker' put: aPlotlyMarker
