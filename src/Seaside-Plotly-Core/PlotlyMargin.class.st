@@ -11,6 +11,12 @@ PlotlyMargin class >> value: anInteger [
 		yourself
 ]
 
+{ #category : #'instance creation' }
+PlotlyMargin class >> zero [ 
+	
+	^self value: 0
+]
+
 { #category : #accessing }
 PlotlyMargin >> bottom: anInteger [
 

@@ -5,6 +5,14 @@ Class {
 }
 
 { #category : #'instance creation' }
+PlotlyTrace class >> bar [
+
+	^self new 
+		type: 'bar';
+		yourself
+]
+
+{ #category : #'instance creation' }
 PlotlyTrace class >> box [ 
 
 	^self new 
@@ -63,6 +71,18 @@ PlotlyTrace >> dontClipOnAxis [
 	self clipOnAxis: false
 ]
 
+{ #category : #convenience }
+PlotlyTrace >> lineAndMarkersMode [
+
+	self mode: 'lines+markers'
+]
+
+{ #category : #convenience }
+PlotlyTrace >> lineOnlyMode [
+
+	self mode: 'line'
+]
+
 { #category : #configuring }
 PlotlyTrace >> marker [
 
@@ -73,6 +93,18 @@ PlotlyTrace >> marker [
 PlotlyTrace >> marker: aPlotlyMarker [
 
 	self propertyAt: 'marker' put: aPlotlyMarker
+]
+
+{ #category : #convenience }
+PlotlyTrace >> markersOnlyMode [
+
+	self mode: 'markers'
+]
+
+{ #category : #configuring }
+PlotlyTrace >> mode: aString [
+
+	self propertyAt: 'mode' put: aString
 ]
 
 { #category : #configuring }
