@@ -9,7 +9,7 @@ BaselineOfPlotly >> baseline: spec [
 	<baseline>
 	spec
 		for: #common
-		do: [ "self seaside: spec."
+		do: [ self seaside: spec.
 			spec
 				package: 'Seaside-Plotly-Core'
 					with: [ spec requires: #('Seaside3') ];
@@ -24,11 +24,9 @@ BaselineOfPlotly >> baseline: spec [
 
 { #category : #baselines }
 BaselineOfPlotly >> seaside: spec [
-
 	spec
-			baseline: 'Seaside3'
-        	with: [ 
-				spec
-					loads: #('default');
-					repository: 'github://SeasideSt/Seaside:master/repository' ]
+		baseline: 'Seaside3'
+		with: [ spec
+				loads: #('default');
+				repository: 'github://SeasideSt/Seaside:master/repository' ]
 ]
