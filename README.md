@@ -86,6 +86,7 @@ Metacello new
 path := (CfsPath named: 'path\to\repository'). "Path to the cloned repository"
 loader := TonelLoader readFromPath: path.
 loader
+	createsHookMethods: true;
 	beUnattended;
 	useGitVersion;
 	loadApplicationsForPackagesNamed: #('Seaside-Plotly-Core' 'Seaside-Plotly-Examples').
