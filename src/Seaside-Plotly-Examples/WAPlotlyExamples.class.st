@@ -13,11 +13,9 @@ WAPlotlyExamples class >> initialize [
 
 { #category : #'rendering-meta' }
 WAPlotlyExamples >> examples [
-	^ OrderedCollection
-		streamContents: [ :s | 
-			Pragma
-				withPragmasIn: self class
-				do: [ :pragma | s nextPut: pragma method selector ] ]
+	^ OrderedCollection streamContents: [ :s | 
+		(Pragma allNamed: #example in: self class) do: [ :pragma | 
+			s nextPut: pragma method selector ] ]
 ]
 
 { #category : #private }
