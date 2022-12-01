@@ -71,6 +71,18 @@ PlotlyTrace >> dontClipOnAxis [
 	self clipOnAxis: false
 ]
 
+{ #category : #configuring }
+PlotlyTrace >> line [
+
+	^ self propertyAt: 'line' ifAbsentPut: [ PlotlyLine new ]
+]
+
+{ #category : #configuring }
+PlotlyTrace >> line: aPlotlyLine [
+
+	self propertyAt: 'line' put: aPlotlyLine
+]
+
 { #category : #convenience }
 PlotlyTrace >> lineAndMarkersMode [
 

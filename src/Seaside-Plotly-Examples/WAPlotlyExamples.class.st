@@ -15,8 +15,8 @@ WAPlotlyExamples class >> initialize [
 WAPlotlyExamples >> examples [
 	^ OrderedCollection
 		streamContents: [ :s | 
-			Pragma
-				withPragmasIn: self class
+			(Pragma 
+				allNamed: #example in:  self class)
 				do: [ :pragma | s nextPut: pragma method selector ] ]
 ]
 
@@ -255,6 +255,39 @@ WAPlotlyExamples >> scriptExampleHistogramOn: script elementId: elementId [
 				title: (PlotlyText text: 'Histogram');
 				width: 500 height: 300;
 				yourself).
+	plotly config beResponsive.
+	script << plotly
+]
+
+{ #category : #'javascript-examples' }
+WAPlotlyExamples >> scriptExampleLineTypeOn: script elementId: elementId [
+
+	<example>
+	| plotly |
+	plotly := script plotly: elementId.
+	plotly
+		data: { 
+				(PlotlyTrace scatter
+					 name: 'Spline series';
+					 showlegend: true;
+					 line: (PlotlyLine new
+							  shape: 'spline';
+							  color: Color lightGray;
+							  dash: 'dot';
+							  yourself);
+					 x: (1 to: 10) asArray;
+					 y: ((1 to: 10) collect: [ :each | 10 atRandom / 2 ]);
+					 yourself). "Color veryLightGray"
+				(PlotlyTrace scatter
+					 name: 'Linear series';
+					 showlegend: true;
+					 x: (1 to: 10) asArray;
+					 y: ((1 to: 10) collect: [ :each | 10 atRandom / 2 ]);
+					 yourself) };
+		layout: (PlotlyLayout new
+				 title: (PlotlyText text: 'Line Types');
+				 width: 500 height: 300;
+				 yourself).
 	plotly config beResponsive.
 	script << plotly
 ]
