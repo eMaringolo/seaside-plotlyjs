@@ -18,6 +18,7 @@ WAPlotlyExamples >> examples [
 			(Pragma 
 				allNamed: #example in:  self class)
 				do: [ :pragma | s nextPut: pragma method selector ] ]
+
 ]
 
 { #category : #private }
